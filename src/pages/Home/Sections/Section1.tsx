@@ -77,7 +77,7 @@ const StyledCont = styled.div`
             text-align: center;
             padding: 1rem;
             color:#fff;
-            max-width: 225px;
+            max-width: 236px;
             height: 353px;
             position:relative;
             justify-content: center;
@@ -94,7 +94,7 @@ const StyledCont = styled.div`
                     margin: 0 0 14px;
                 }
                 a{
-                    max-width: 142px;
+                    max-width: 182px;
                     display: inline-block;
                     margin: 0 auto;
                     background: #859f5b;
