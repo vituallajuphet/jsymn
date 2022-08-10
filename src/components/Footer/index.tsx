@@ -90,6 +90,16 @@ const StyledFooter = styled.footer`
         width: 100%;
         
       }
+      button{
+        display: block;
+        width: 100%;
+        padding: 9px;
+        font-family: inherit;
+        background-color: #859f5b;
+        color: #fff;
+        text-transform: uppercase;
+        border: none;
+      }
       textarea{ 
         display: block;
         padding: 9px;
