@@ -27,6 +27,12 @@ const StyledBanner = styled.div`
     overflow-y: hidden;
     position:relative;
     
+    .bnr_images{
+      width: 1920px;
+      left: -368px;
+      position: relative;
+    }
+    
     .bnr_info{
       position: absolute;
       width: 100%;
@@ -35,10 +41,10 @@ const StyledBanner = styled.div`
       min-height: 285px;
       z-index:2;
       padding: 1rem;
-      top: 5rem;
+      top: 2rem;
       h2{
         color: #00beff;
-        font-size: 45px;
+        font-size: 38px;
         word-spacing: 1px;
         line-height: 3.5rem;
         span{

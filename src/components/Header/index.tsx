@@ -16,11 +16,11 @@ function Header() {
                 <span>J SYNC</span>
             </div>
             <div className="contact_header_info">
-              <div className="contact_number">
+              {/* <div className="contact_number">
                 <span className="phone_number">
                   <i className="fas fa-phone"></i> 09051123121
                 </span>
-              </div>
+              </div> */}
               <div className="social_icons">
                 <span>
                   <a href="https://www.facebook.com">
