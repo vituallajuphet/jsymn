@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import secImg from '../../../assets/images/sec1img.jpg';
@@ -8,9 +8,24 @@ import icon3 from '../../../assets/images/icons/icon3.jpg';
 import icon4 from '../../../assets/images/icons/icon4.jpg';
 import icon5 from '../../../assets/images/icons/icon5.jpg';
 import icon6 from '../../../assets/images/icons/icon6.jpg';
+import { PROJECT_URL } from '../../../dbconfig';
+import axios from 'axios';
 
 
-function Section1() {
+const Section1 = () => {
+
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    axios.get(PROJECT_URL('*[_type == "service"]')).then(res => {
+      setData(res.data)
+    })
+  }, [])
+
+  const memResults: any[] = useMemo(() => data.result , [data]) 
+
+  console.log('@@tigbak -> xxxx', memResults);
+
   return (
     <StyledCont className='section section1'>
         <div className="wrapper">
@@ -125,7 +140,7 @@ const StyledCont = styled.div`
             }
         }
         .services_lists{
-            margin-left: 2rem;
+            margin-left: 4rem;
                 display: flex;
                 flex-wrap: wrap;
                 .service_item{

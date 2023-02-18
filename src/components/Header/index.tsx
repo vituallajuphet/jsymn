@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
+import { PROJECT_URL } from "../../dbconfig";
 
-function Header() {
+const Header = () => {
+  
+  const [data, setData] = useState<any>([]);
+
+  
+
+  useEffect(() => {
+    axios.get(PROJECT_URL("*[_type == 'person']{ name, 'imageUrl': image.asset->url }")).then(res => {
+      setData(res.data)
+    })
+  }, [])
+
+  const memResults: any[] = useMemo(() => data.result , [data])
+  
+
   return (
     <StyledHeader className="header">
       <div className="wrapper">
@@ -35,6 +51,16 @@ function Header() {
                 </span>
               </div>
             </div>
+          </div>
+          <div>
+            {memResults?.map(r => {
+              return <div>
+                <div>{r?.title}</div>
+                <div>
+                  {r?.Image?.asset}
+                </div>
+              </div>
+            })}
           </div>
           <div className="nav_cont">
             <nav>
@@ -95,7 +121,7 @@ const StyledHeader = styled.div`
   }
 
   &.header {
-    background-color: #00beff;
+    background-color: #185d75;
   }
   .header_cont {
     display: flex;
@@ -127,7 +153,7 @@ const StyledHeader = styled.div`
             margin-left:1rem;
             span{
                 display: flex;
-                gap: 0.5rem;
+                gap: 1rem;
                 a{
                     color: #fff;
                     font-size: 1.4rem;
@@ -151,7 +177,7 @@ const StyledHeader = styled.div`
         a {
           color: white;
           text-decoration: none;
-          font-size: 14px;
+          font-size: 16px;
           transition: all ease-in 300ms;
           &:hover {
             opacity: 0.5;
@@ -163,10 +189,11 @@ const StyledHeader = styled.div`
   .logo_cont {
     display: flex;
     align-items: center;
+    padding: 9px 0;
 
     span {
-      font-size: 1rem;
-      color: #4165b5;
+      font-size: 1.1rem;
+      color: #fff;
       margin-left: 10px;
       font-weight: bold;
     }

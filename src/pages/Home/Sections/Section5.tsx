@@ -83,7 +83,7 @@ const StyledCont = styled.div`
             max-width: 400px;   
             padding: 2rem 1rem;
             border-radius: 19px;
-            background: #bdfbd2;
+            background: #219bc5;
             .legend{
                 position: static;
                 width: 100%;
@@ -96,14 +96,14 @@ const StyledCont = styled.div`
                 .author{
                     font-weight: bold;
                     font-size: 19px;
-                    color: #5b5b5b;
+                    color: #fff;
                 }
                 .author_description{
                     display: block;
                     font-size: 15px;
                     margin: 1rem 0 0;
                     padding: 0 2rem;
-                    color: #736f6f;
+                    color: #fff;
                 }
             }
         }
@@ -112,7 +112,7 @@ const StyledCont = styled.div`
             height: 250px;
             border-radius: 50%;
             overflow: hidden;
-            border: 6px solid #b7bbc4;
+            border: 6px solid #dbdbdb;
             img{
             
             }

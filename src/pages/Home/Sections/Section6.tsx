@@ -78,16 +78,16 @@ function Section6() {
 }
 
 const StyledCont = styled.div`
-    background: #bdfbd2;
+    background: #219bc5;
     padding: 4rem 0;
     min-height: 400px;
     h2{
-        color: #423d3d;
+        color: #fff;
         font-size: 2rem;
         margin-bottom: 1rem;
     }
     p{
-        color: #7e7e7e;
+        color: #fff;
     }
     .posts_cont{
         display: flex;
