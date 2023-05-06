@@ -2,27 +2,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import secImg from "../../../assets/images/sec1img.jpg";
-import icon1 from "../../../assets/images/icons/icon1.jpg";
-import icon2 from "../../../assets/images/icons/icon2.jpg";
-import icon3 from "../../../assets/images/icons/icon3.jpg";
-import icon4 from "../../../assets/images/icons/icon4.jpg";
-import icon5 from "../../../assets/images/icons/icon5.jpg";
-import icon6 from "../../../assets/images/icons/icon6.jpg";
-// import { PROJECT_URL } from '../../../dbconfig';
-// import axios from 'axios';
+
+import {getImage} from '../../../utils/'
+import { getServices } from "../../../dbconfig/query";
+
+
 
 const Section1 = () => {
   const [data, setData] = useState<any>([]);
+  useEffect(() => {
+    getServices().then((res) => {
+      setData(res);
+    });
+  }, []);
 
-  //   useEffect(() => {
-  //     axios.get(PROJECT_URL('*[_type == "service"]')).then((res) => {
-  //       setData(res.data);
-  //     });
-  //   }, []);
-
-  const memResults: any[] = useMemo(() => data.result, [data]);
-
-  console.log("@@tigbak -> xxxx", memResults);
 
   return (
     <StyledCont className='section section1'>
@@ -30,7 +23,7 @@ const Section1 = () => {
         <div className='sect_cont'>
           <div className='sect1_cont'>
             <div className='sec1_inner'>
-              <h2>Our Services</h2>
+              <h2 className="font-heading text-[1.5rem]">Our Services</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
                 dolores omnis repellendus porro unde blanditiis obcaecati sint?
@@ -39,60 +32,26 @@ const Section1 = () => {
             </div>
           </div>
           <div className='services_lists'>
-            <div className='service_item'>
-              <img src={icon1} alt='' />
-              <h3>Graphics Design</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
-            <div className='service_item'>
-              <img src={icon2} alt='' />
-              <h3>PC / Laptop Repair</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
-            <div className='service_item'>
-              <img src={icon3} alt='' />
-              <h3>Video Editing</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
-            <div className='service_item'>
-              <img src={icon4} alt='' />
-              <h3>Web Development (Soon)</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
-            <div className='service_item'>
-              <img src={icon5} alt='' />
-              <h3>Software Installation</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
-            <div className='service_item'>
-              <img src={icon6} alt='' />
-              <h3>And More</h3>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non
-                minus ad repudiandae
-              </p>
-              <Link to='/services'>Read More</Link>
-            </div>
+            {
+              data.length ? (
+                  <>
+                    {data.map((d: any, i: number) => {
+                      return (
+                          <div className='service_item' key={d._id}>
+                              <img src={getImage(d.iconImage.asset._ref)} alt={d.heading} />
+                              <h3>{d.heading}</h3>
+                              <p>{d.content}
+                              </p>
+                              <Link to={d.link}>Read More</Link>
+                          </div>
+                      )
+                    })}
+                  </>
+              ) : null
+
+            }
+            
+           
           </div>
         </div>
       </div>

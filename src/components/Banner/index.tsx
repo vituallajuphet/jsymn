@@ -1,21 +1,48 @@
-import React from 'react'
-import bnrImage  from '../../assets/images/banner.jpg'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import 'react-slideshow-image/dist/styles.css'
+import { Slide } from 'react-slideshow-image';
+import { getBanner } from '../../dbconfig/query'
+import {getImage} from '../../utils/'
+import {PortableText} from '@portabletext/react'
 
-function Banner() {
+const  Banner = () => {
+  const [data, setData] = useState<any>([]);
+  useEffect(() => {
+    getBanner().then((res) => {
+      setData(res);
+    });
+  }, []);
+  
   return (
     <StyledBanner>
-        <div className="bnr_cont">
-          <div className="wrapper">
-              <div className='bnr_info'>
-                  <h2>Your PC / Laptop Wants To Live More. <span>Bring it to Us.</span></h2>
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In consectetur ipsam repudiandae sunt quia dolorem asperiores! Quia laudantium harum ut.!</p>
-                  <Link to='/about-us'>Learn More</Link>
-              </div>
-              <figure className='bnr_images'>
-                <img src={bnrImage} alt="banner" />
-              </figure>
+        <div className="bnr_cont overflow-hidden relative">
+          <div className="">
+            <div className='w-[100%]'>
+               {data?.length ? (
+                <Slide>
+                {data.map((dta: any, index: number)=> (
+                    <div key={index} className='relative'>
+                      <div style={{'backgroundImage': `url(${getImage(dta.mainImage.asset._ref)})` }} 
+                        className='h-[500px] bg-no-repeat bg-center'
+                      >
+                      </div>
+                      <div className=' w-full bottom-0 left-0 min-h-[200px] py-4 z-20 absolute bg-[#302e2e6c]'>
+                          <div className="wrapper">
+                           <h2 className='font-heading text-[2rem] text-white'>{dta.heading}</h2>
+                           
+                           <div className='text-white'>
+                            <PortableText
+                              value={dta.body}
+                            />
+                           </div>
+                          </div>
+                        </div>
+                    </div>
+                  ))} 
+              </Slide>
+               ) : null}
+            </div>
           </div>
         </div>
     </StyledBanner>
@@ -23,16 +50,11 @@ function Banner() {
 }
 
 const StyledBanner = styled.div`
-    height: 500px;
+    height: 550px;
     overflow-y: hidden;
     position:relative;
     
-    .bnr_images{
-      width: 1920px;
-      left: -368px;
-      position: relative;
-    }
-    
+
     .bnr_info{
       position: absolute;
       width: 100%;
@@ -85,14 +107,14 @@ const StyledBanner = styled.div`
         width:100%;
       }
       
-      &:before{
+      /* &:before{
         position:absolute;
         content: "";
         width: 100%;
         height: 100%;
         background-color: rgba(0,0,0, .5);
         z-index: 1;
-      }
+      } */
     }
 `
 

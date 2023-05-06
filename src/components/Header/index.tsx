@@ -2,17 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getPosts } from "../../dbconfig/query";
+import { getBanner } from "../../dbconfig/query";
 import { getImage } from "../../utils";
 
 const Header = () => {
-  const [data, setData] = useState<any>([]);
 
-  useEffect(() => {
-    getPosts().then((res) => {
-      setData(res);
-    });
-  }, []);
 
   return (
     <StyledHeader className='header'>
@@ -46,7 +40,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div>
+          {/* <div>
             {data.map((r: any) => {
               const imgRef = r.mainImage.asset._ref;
 
@@ -57,7 +51,7 @@ const Header = () => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
           <div className='nav_cont'>
             <nav>
               <ul>
