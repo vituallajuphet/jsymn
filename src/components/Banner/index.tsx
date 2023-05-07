@@ -54,6 +54,17 @@ const StyledBanner = styled.div`
     overflow-y: hidden;
     position:relative;
     
+    .bnr_cont {
+      .react-slideshow-container .default-nav {
+        background: rgba(255, 255, 255, 0.69);
+        border-radius: 0;
+        width: 50px;
+        height: 50px;
+        &:hover{
+          opacity: .5;
+        }
+      }
+    }
 
     .bnr_info{
       position: absolute;

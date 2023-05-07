@@ -1,16 +1,39 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { getSection2Heading } from '../../../dbconfig/query';
+import Loading from '../../../components/Loading/Loading';
+import { AppContext } from '../../../context/AppContext';
 
+const  Section2 = () =>  {
 
+  const [data, setData] = useState<any>([]);
+  useEffect(() => {
+    getSection2Heading().then((res) => {
+      setData(res);
+    });
+  }, []);
 
-function Section2() {
+  const context = useContext(AppContext)
+
+  const {send} = context;
+
+ const handleClick =  ()=> {
+
+  send((prev: any) => {
+    return {...prev, appState: 'loading'}    
+  })
+
+ }
+
   return (
     <StyledCont className='section section2'>
+        <Loading />
         <div className="wrapper">
             <div className='sec2_upper'>
                 <h2>Have Computer Problems? <span>Get Help Right Now</span></h2>
             </div>
+            <button onClick={handleClick}>looading</button>
             <div className="sec2_cont">
                 <div className='sec2_item'>
                     <span>

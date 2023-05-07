@@ -15,3 +15,13 @@ export  const getServices = async () =>  {
   const posts = await client.fetch('*[_type == "services"]')
   return posts
 }
+
+export  const getsectionList = async () =>  {
+  const data = await client.fetch('*[_type == "section2List"]')
+  return data
+}
+
+export  const getSection2Heading = async () =>  {
+  const data = await client.fetch('*[_type == "section2"]')
+  return data
+}
