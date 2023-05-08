@@ -25,3 +25,19 @@ export  const getSection2Heading = async () =>  {
   const data = await client.fetch('*[_type == "section2"]')
   return data
 }
+
+export const getAllHomeData =  async () => {
+
+  const data = await client.fetch(`
+    {
+      'services':*[_type == "services"],
+      'sectionList':*[_type == "section2List"],
+      'sections': *[_type == "section2"],
+      'banner': *[_type == "banner"],
+      'post': *[_type == "post"],
+    }
+  `);
+  
+  return data
+}
+

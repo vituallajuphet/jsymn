@@ -1,57 +1,47 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import secImg from "../../../assets/images/sec1img.jpg";
 
-import {getImage} from '../../../utils/'
-import { getServices } from "../../../dbconfig/query";
-
-
+import { getImage } from "../../../utils/";
+import { useRecoilValue } from "recoil";
+import { servicesList } from "../../../Atoms/selectors";
 
 const Section1 = () => {
-  const [data, setData] = useState<any>([]);
-  useEffect(() => {
-    getServices().then((res) => {
-      setData(res);
-    });
-  }, []);
-
+  const data = useRecoilValue(servicesList);
 
   return (
-    <StyledCont className='section section1'>
-      <div className='wrapper'>
-        <div className='sect_cont'>
-          <div className='sect1_cont'>
-            <div className='sec1_inner'>
+    <StyledCont className="section section1">
+      <div className="wrapper">
+        <div className="sect_cont">
+          <div className="sect1_cont">
+            <div className="sec1_inner">
               <h2 className="font-heading text-[1.5rem]">Our Services</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
                 dolores omnis repellendus porro unde blanditiis obcaecati sint?
               </p>
-              <Link to='/services'>Explore All Services</Link>
+              <Link to="/services">Explore All Services</Link>
             </div>
           </div>
-          <div className='services_lists'>
-            {
-              data.length ? (
-                  <>
-                    {data.map((d: any, i: number) => {
-                      return (
-                          <div className='service_item' key={d._id}>
-                              <img src={getImage(d.iconImage.asset._ref)} alt={d.heading} />
-                              <h3>{d.heading}</h3>
-                              <p>{d.content}
-                              </p>
-                              <Link to={d.link}>Read More</Link>
-                          </div>
-                      )
-                    })}
-                  </>
-              ) : null
-
-            }
-            
-           
+          <div className="services_lists">
+            {data.length ? (
+              <>
+                {data.map((d: any, i: number) => {
+                  return (
+                    <div className="service_item" key={d._id}>
+                      <img
+                        src={getImage(d.iconImage.asset._ref)}
+                        alt={d.heading}
+                      />
+                      <h3>{d.heading}</h3>
+                      <p>{d.content}</p>
+                      <Link to={d.link}>Read More</Link>
+                    </div>
+                  );
+                })}
+              </>
+            ) : null}
           </div>
         </div>
       </div>

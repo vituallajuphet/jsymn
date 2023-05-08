@@ -2,18 +2,14 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import 'react-slideshow-image/dist/styles.css'
 import { Slide } from 'react-slideshow-image';
-import { getBanner } from '../../dbconfig/query'
 import {getImage} from '../../utils/'
 import {PortableText} from '@portabletext/react'
+import {useRecoilValue} from 'recoil'
+import { bannerData } from '../../Atoms/selectors';
 
 const  Banner = () => {
-  const [data, setData] = useState<any>([]);
-  useEffect(() => {
-    getBanner().then((res) => {
-      setData(res);
-    });
-  }, []);
-  
+  const data = useRecoilValue(bannerData)
+
   return (
     <StyledBanner>
         <div className="bnr_cont overflow-hidden relative">
