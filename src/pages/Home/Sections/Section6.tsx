@@ -67,12 +67,13 @@ function Section6() {
             doloribus consequuntur ratione
           </p>
           <div className="posts_cont">
-            {items.map((item) => {
+            {items.map((item, index) => {
               const { id, title, content, images } = item;
               return (
                 <div
                   key={id}
-                  data-aos="fade-left"
+                  data-aos="slide-up"
+                  data-aos-duration={`${500 * index}`}
                   className="post_item max-w-[360px] bg-white "
                 >
                   <div className="post_content">
