@@ -35,6 +35,7 @@ export const getAllHomeData =  async () => {
       'sections': *[_type == "section2"],
       'banner': *[_type == "banner"],
       'post': *[_type == "post"],
+      'events': *[_type == "events"],
     }
   `);
   

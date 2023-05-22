@@ -22,6 +22,15 @@ export const bannerData = selector({
   },
 });
 
+export const eventData = selector({
+  key: "eventData",
+  get: ({ get }) => {
+    const data = get(homeDatas);
+    if (!data) return [];
+    return data?.events;
+  },
+});
+
 export const servicesList = selector({
   key: "servicesList",
   get: ({ get }) => {

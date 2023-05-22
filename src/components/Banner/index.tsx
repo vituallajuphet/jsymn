@@ -46,7 +46,7 @@ const  Banner = () => {
 }
 
 const StyledBanner = styled.div`
-    height: 550px;
+    height: auto;
     overflow-y: hidden;
     position:relative;
     
