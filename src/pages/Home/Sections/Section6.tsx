@@ -70,9 +70,13 @@ function Section6() {
             {items.map((item) => {
               const { id, title, content, images } = item;
               return (
-                <div key={id} className="post_item max-w-[360px] bg-white ">
+                <div
+                  key={id}
+                  data-aos="fade-left"
+                  className="post_item max-w-[360px] bg-white "
+                >
                   <div className="post_content">
-                    <figure className="relative">
+                    <figure className="relative ">
                       <img
                         alt="images"
                         src={images}
@@ -86,7 +90,7 @@ function Section6() {
                         />
                       </div>
                     </figure>
-                    <div className="p-4 border border-[#14adc1] border-t-0">
+                    <div className="p-4 ">
                       <div className="flex-row flex items-center mb-4">
                         <div className="mr-2">
                           <img
@@ -107,14 +111,14 @@ function Section6() {
                       <p className="mb-4 text-gray-600 font-thin">{content}</p>
                       <a
                         href=""
-                        className="min-w-[7rem] inline-block border text-gray-700 border-gray-200 text-sm text-center p-2  rounded-full mt-4"
+                        className="min-w-[7rem] inline-block border text-gray-700 border-gray-200 text-sm text-center p-2  rounded-full mt-4 transition-opacity duration-1000 ease-out opacity-100 hover:opacity-40"
                       >
                         Read More
                       </a>
                       <div className="w-full h-[1px] bg-gray-200 my-4"></div>
 
                       <div className="flex-row flex">
-                        <a className="flex-row flex items-center" href="#">
+                        <a className="flex-row flex items-center " href="#">
                           <i className="fas fa-comment text-sm text-gray-600"></i>
                           <span className="font-bold text-[12px] text-gray-600 ml-1">
                             No Comments
