@@ -87,14 +87,40 @@ function Section6() {
                       </div>
                     </figure>
                     <div className="p-4 border border-[#14adc1] border-t-0">
-                      <h3 className="text-[25px] mb-2">{title}</h3>
+                      <div className="flex-row flex items-center mb-4">
+                        <div className="mr-2">
+                          <img
+                            src={logo}
+                            className="w-[35px] h-[35px]"
+                            alt="logo"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-[12px]">Jsync Author</h4>
+                          <div className="text-[11px] text-gray-400">
+                            March 15, 2023
+                          </div>
+                        </div>
+                      </div>
+
+                      <h3 className="text-[20px] mb-2">{title}</h3>
                       <p className="mb-4 text-gray-600 font-thin">{content}</p>
                       <a
                         href=""
-                        className="min-w-[6rem] inline-block border border-gray-200 text-sm text-center p-2 rounded-full mt-4"
+                        className="min-w-[7rem] inline-block border text-gray-700 border-gray-200 text-sm text-center p-2  rounded-full mt-4"
                       >
                         Read More
                       </a>
+                      <div className="w-full h-[1px] bg-gray-200 my-4"></div>
+
+                      <div className="flex-row flex">
+                        <a className="flex-row flex items-center" href="#">
+                          <i className="fas fa-comment text-sm text-gray-600"></i>
+                          <span className="font-bold text-[12px] text-gray-600 ml-1">
+                            No Comments
+                          </span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
