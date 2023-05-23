@@ -81,7 +81,7 @@ function Footer() {
             </div>
             <div className="flex flex-col w-[245px]">
               <h3 className="font-bold text-[18px] text-[#044862]">Address</h3>
-              <div className="my-4 mb-12">
+              <div className="my-4 mb-8">
                 <address className="whitespace-pre-line not-italic text-sm">
                   Brgy. Poblacion Mahaplag Leyte Philippines, 6512
                 </address>
