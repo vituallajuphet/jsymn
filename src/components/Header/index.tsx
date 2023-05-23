@@ -6,35 +6,33 @@ import { getBanner } from "../../dbconfig/query";
 import { getImage } from "../../utils";
 
 const Header = () => {
-
-
   return (
-    <StyledHeader className='header'>
-      <div className='wrapper'>
-        <div className='header_cont'>
-          <div className='logo_cont'>
-            <div className='logo_inner'>
-              <Link to='/'>
-                <img src={logo} alt='Jsync logo' />
+    <StyledHeader className="header">
+      <div className="wrapper">
+        <div className="header_cont">
+          <div className="logo_cont">
+            <div className="logo_inner">
+              <Link to="/">
+                <img src={logo} alt="Jsync logo" />
               </Link>
               <span>J SYNC</span>
             </div>
-            <div className='contact_header_info'>
+            <div className="contact_header_info">
               {/* <div className="contact_number">
                 <span className="phone_number">
                   <i className="fas fa-phone"></i> 09051123121
                 </span>
               </div> */}
-              <div className='social_icons'>
+              <div className="social_icons">
                 <span>
-                  <a href='https://www.facebook.com'>
-                    <i className='fa-brands fa-facebook'></i>
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-facebook"></i>
                   </a>
-                  <a href='https://www.facebook.com'>
-                    <i className='fa-brands fa-instagram'></i>
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-instagram"></i>
                   </a>
-                  <a href='https://www.facebook.com'>
-                    <i className='fa-brands fa-twitter'></i>
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-twitter"></i>
                   </a>
                 </span>
               </div>
@@ -52,23 +50,28 @@ const Header = () => {
               );
             })}
           </div> */}
-          <div className='nav_cont'>
+          <div className="nav_cont">
             <nav>
               <ul>
+                <li></li>
+                <Link to="about-us">Home</Link>
                 <li>
-                  <Link to='about-us'>Home</Link>
+                  <Link to="about-us">About Us</Link>
                 </li>
                 <li>
-                  <Link to='about-us'>About Us</Link>
+                  <Link to="about-us">Services</Link>
                 </li>
                 <li>
-                  <Link to='about-us'>Services</Link>
+                  <Link to="about-us">Blogs</Link>
                 </li>
                 <li>
-                  <Link to='about-us'>Our Staff</Link>
+                  <Link to="about-us">Our Staff</Link>
                 </li>
                 <li>
-                  <Link to='about-us'>Contact Us</Link>
+                  <Link to="about-us">Events</Link>
+                </li>
+                <li>
+                  <Link to="about-us">Contact Us</Link>
                 </li>
               </ul>
             </nav>

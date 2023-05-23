@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Footer() {
@@ -66,14 +67,18 @@ function Footer() {
         <div className="wrapper">
           <div className="flex flex-row gap-6">
             <div className="flex flex-col max-w-[30%]">
-              <a href="#" className="w-[85px] h-[85px]">
-                <img
-                  className="block "
-                  src={require("../../assets/images/logo.png")}
-                  alt="JSYNC"
-                />
-              </a>
-              <p className="text-sm pt-6">
+              <div className="flex flex-row items-center">
+                <a href="#" className="w-[85px] h-[85px]">
+                  <img
+                    className="block "
+                    src={require("../../assets/images/logo.png")}
+                    alt="JSYNC"
+                  />
+                </a>
+                <h3 className="ml-3 text-[38px] text-[#044862]">JSYNC</h3>
+              </div>
+
+              <p className="text-sm pt-6 leading-6">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Molestiae magni dolorem porro dicta debitis. Repudiandae error
                 inventore incidunt dolor non
@@ -82,7 +87,7 @@ function Footer() {
             <div className="flex flex-col w-[245px]">
               <h3 className="font-bold text-[18px] text-[#044862]">Address</h3>
               <div className="my-4 mb-8">
-                <address className="whitespace-pre-line not-italic text-sm">
+                <address className="whitespace-pre-line not-italic text-sm leading-6">
                   Brgy. Poblacion Mahaplag Leyte Philippines, 6512
                 </address>
               </div>
@@ -91,7 +96,7 @@ function Footer() {
               </h3>
               <div className="mt-2 text-sm">
                 <div className="flex flex-row gap-2 items-center">
-                  <span className="text-lg">
+                  <span className="text-lg text-[#323232]">
                     <i className="fas fa-phone"></i>
                   </span>
                   <a href="tel:09058927403" className="font-bold">
@@ -99,7 +104,7 @@ function Footer() {
                   </a>
                 </div>
                 <div className="flex flex-row gap-2 items-center mt-1">
-                  <span className="text-lg">
+                  <span className="text-lg text-[#323232]">
                     <i className="fas fa-envelope"></i>
                   </span>
                   <a href="mailto:jsync@gmail.com" className="font-bold">
@@ -108,16 +113,66 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <div>
-              <h3 className="font-bold text-[20px] text-[#044862]">Links</h3>
+            <div className="min-w-[150px]">
+              <h3 className="font-bold text-[20px] text-[#044862] mb-2">
+                Links
+              </h3>
+              <div>
+                <ul className="text-sm flex-col gap-[7px] flex">
+                  <li>
+                    <Link to="about-us">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">About Us</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">Services</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">Blogs</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">Our Staff</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">Events</Link>
+                  </li>
+                  <li>
+                    <Link to="about-us">Contact Us</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold text-[20px] text-[#044862]">
+            <div className="flex flex-1 flex-col">
+              <h3 className="font-bold text-[20px] text-[#044862] mb-4">
                 Newsletter
               </h3>
+              <div>
+                <form action="">
+                  <label htmlFor="email">
+                    <input
+                      required
+                      className="border p-2 w-full"
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Your Email Address"
+                    />
+                  </label>
+                  <button
+                    type="submit"
+                    className="bg-[#859f5b] p-2 rounded-full mt-4 px-4 text-white transition-opacity duration-1000 ease-out opacity-100 hover:opacity-40"
+                  >
+                    Subscribe Now
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="text-center text-white py-6 bg-[#044862]">
+        <span>Copyright &copy; 2022 JSYNC - All Rights Reserved</span>
       </div>
     </StyledFooter>
   );
