@@ -29,7 +29,12 @@ const Section1 = () => {
               <>
                 {data.map((d: any, i: number) => {
                   return (
-                    <div className="service_item" key={d._id}>
+                    <div
+                      className="service_item"
+                      key={d._id}
+                      data-aos="slide-up"
+                      data-aos-duration={(i === 0 ? 1 : i) * 1000}
+                    >
                       <img
                         src={getImage(d.iconImage.asset._ref)}
                         alt={d.heading}

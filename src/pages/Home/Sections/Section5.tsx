@@ -5,8 +5,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import dwight from "../../../assets/images/staffs/dwight.jpg";
 import jheric from "../../../assets/images/staffs/ikoy.jpg";
 import syriel from "../../../assets/images/staffs/syriel.jpg";
+import { useRecoilValue } from "recoil";
+import { authorData } from "../../../Atoms/selectors";
+import { getImage } from "../../../utils";
+import { PortableText } from "@portabletext/react";
 
 function Section5() {
+  const data = useRecoilValue(authorData);
   return (
     <StyledCont className="section Section5">
       <div className="wrapper">
@@ -19,42 +24,24 @@ function Section5() {
           </p>
           <div className="staffLists">
             <Carousel emulateTouch showIndicators={false} showStatus={false}>
-              <div className="slide_item">
-                <div className="slideImgContainer">
-                  <img src={dwight} />
-                </div>
-                <p className="legend">
-                  <span className="author">Dwight Recamadas</span>
-                  <div className="author_description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Veniam nisi quidem voluptate repellendus
+              {data?.map((d: any) => {
+                return (
+                  <div className="slide_item">
+                    <div className="slideImgContainer">
+                      <img src={getImage(d.image.asset._ref)} alt={d.name} />
+                    </div>
+                    <p className="legend">
+                      <span className="author">{d.name}</span>
+                      <span className="block text-sm text-[#c1faff]">
+                        {d.position}
+                      </span>
+                      <div className="author_description font-thin">
+                        <PortableText value={d.bio} />
+                      </div>
+                    </p>
                   </div>
-                </p>
-              </div>
-              <div className="slide_item">
-                <div className="slideImgContainer">
-                  <img src={jheric} />
-                </div>
-                <p className="legend">
-                  <span className="author">Jheric Piscos</span>
-                  <div className="author_description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Veniam nisi quidem voluptate repellendus
-                  </div>
-                </p>
-              </div>
-              <div className="slide_item">
-                <div className="slideImgContainer">
-                  <img src={syriel} />
-                </div>
-                <p className="legend">
-                  <span className="author">Syriel Bergado</span>
-                  <div className="author_description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Veniam nisi quidem voluptate repellendus
-                  </div>
-                </p>
-              </div>
+                );
+              })}
             </Carousel>
           </div>
         </div>

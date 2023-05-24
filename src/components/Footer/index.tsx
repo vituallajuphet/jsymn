@@ -167,6 +167,19 @@ function Footer() {
                   </button>
                 </form>
               </div>
+              <div className="mt-6">
+                <span className="flex flex-row items-center gap-4 text-[23px] pl-2">
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-facebook"></i>
+                  </a>
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-instagram"></i>
+                  </a>
+                  <a href="https://www.facebook.com">
+                    <i className="fa-brands fa-twitter"></i>
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
