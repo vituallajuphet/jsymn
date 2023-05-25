@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { getBanner } from "../../dbconfig/query";
 import { getImage } from "../../utils";
+import { navLinks } from "../../data";
 
 const Header = () => {
   return (
@@ -12,9 +13,9 @@ const Header = () => {
         <div className="header_cont">
           <div className="logo_cont">
             <div className="logo_inner">
-              <Link to="/">
+              <NavLink to="/">
                 <img src={logo} alt="Jsync logo" />
-              </Link>
+              </NavLink>
               <span>J SYNC</span>
             </div>
             <div className="contact_header_info">
@@ -53,26 +54,21 @@ const Header = () => {
           <div className="nav_cont">
             <nav>
               <ul>
-                <li></li>
-                <Link to="about-us">Home</Link>
-                <li>
-                  <Link to="about-us">About Us</Link>
-                </li>
-                <li>
-                  <Link to="about-us">Services</Link>
-                </li>
-                <li>
-                  <Link to="about-us">Blogs</Link>
-                </li>
-                <li>
-                  <Link to="about-us">Our Staff</Link>
-                </li>
-                <li>
-                  <Link to="about-us">Events</Link>
-                </li>
-                <li>
-                  <Link to="about-us">Contact Us</Link>
-                </li>
+                {navLinks.map((nav) => {
+                  return (
+                    <li>
+                      <NavLink
+                        className={({ isActive, isPending }) =>
+                          isActive ? "text-[#0ab2cc]" : "text-white font-thin"
+                        }
+                        key={nav.id}
+                        to={nav.path}
+                      >
+                        {nav.label}
+                      </NavLink>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>
@@ -167,7 +163,6 @@ const StyledHeader = styled.div`
         margin-left: 1rem;
         list-style-type: none;
         a {
-          color: white;
           text-decoration: none;
           font-size: 16px;
           transition: all ease-in 300ms;

@@ -1,26 +1,51 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Home from "../pages/Home";
+import React, { useEffect, useLayoutEffect } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Loading from "../components/Loading/Loading";
-import {useRecoilState} from 'recoil'
+import { useRecoilState, useRecoilValue } from "recoil";
 import { appstate } from "../Atoms/AppState";
-
+import { NonHomePages, Home } from "../pages";
+import { pagesdata } from "../Atoms/selectors";
+import { AnimatePresence } from "framer-motion";
 
 const AppRoutes = () => {
+  const pages = useRecoilValue(pagesdata);
 
-  const [state] = useRecoilState(appstate);
+  const location = useLocation();
 
-  if(state === 'loading') {
-    return <Loading />
+  if (!pages?.length) {
+    return <Loading />;
   }
-
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          {pages
+            ?.filter((f: any) => f.published)
+            ?.map((page: any) => {
+              const { _id, body, published, slug, title, bannerImage } = page;
+
+              return (
+                <Route
+                  path={`/${slug?.current}`}
+                  element={
+                    <NonHomePages
+                      {...page}
+                      _id={_id}
+                      title={title}
+                      body={body}
+                      published={published}
+                      slug={`/${slug?.current}`}
+                      bannerImage={bannerImage}
+                    />
+                  }
+                />
+              );
+            })}
+        </Routes>
+      </AnimatePresence>
     </div>
   );
-}
+};
 
-export default AppRoutes
+export default AppRoutes;

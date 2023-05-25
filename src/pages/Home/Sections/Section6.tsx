@@ -5,6 +5,7 @@ import post1 from "../../../assets/images/posts/post1.jpg";
 import post2 from "../../../assets/images/posts/post2.jpg";
 import post3 from "../../../assets/images/posts/post3.jpg";
 import logo from "../../../assets/images/logo-small.png";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const items = [
   {
@@ -70,11 +71,12 @@ function Section6() {
             {items.map((item, index) => {
               const { id, title, content, images } = item;
               return (
-                <div
+                <ScrollAnimation
                   key={id}
-                  data-aos="slide-up"
-                  data-aos-duration={`${500 * index}`}
                   className="post_item max-w-[360px] bg-white "
+                  animateIn="animate__slideInUp"
+                  animateOnce
+                  delay={(index + 1) * 250}
                 >
                   <div className="post_content">
                     <figure className="relative ">
@@ -128,7 +130,7 @@ function Section6() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </ScrollAnimation>
               );
             })}
           </div>

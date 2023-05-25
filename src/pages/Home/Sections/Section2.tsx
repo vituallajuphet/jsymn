@@ -5,13 +5,12 @@ import { getSection2Heading } from "../../../dbconfig/query";
 import Loading from "../../../components/Loading/Loading";
 import { useRecoilValue } from "recoil";
 import { section2data } from "../../../Atoms/selectors";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const Section2 = () => {
   const data: any = useRecoilValue(section2data);
 
   const { heading, list } = data;
-
-  console.log("heading", heading);
 
   return (
     <StyledCont className="section section2">
@@ -22,15 +21,20 @@ const Section2 = () => {
           {/* <h2>Have Computer Problems? <span>Get Help Right Now</span></h2> */}
         </div>
         <div className="sec2_cont">
-          {list.map((l: any) => {
+          {list.map((l: any, i: number) => {
             return (
-              <div key={l._id} className="sec2_item">
+              <ScrollAnimation
+                key={l._id}
+                className="sec2_item"
+                animateIn="animate__slideInUp"
+                delay={(i + 1) * 250}
+              >
                 <span>
                   <i className={`fas fa-${l.icon}`}></i>
                 </span>
                 <h3>{l.heading}</h3>
                 <p>{l.content}</p>
-              </div>
+              </ScrollAnimation>
             );
           })}
         </div>

@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import { authorData } from "../../../Atoms/selectors";
 import { getImage } from "../../../utils";
 import { PortableText } from "@portabletext/react";
+import ScrollAnimation from "react-animate-on-scroll";
 
 function Section5() {
   const data = useRecoilValue(authorData);
@@ -16,17 +17,29 @@ function Section5() {
     <StyledCont className="section Section5">
       <div className="wrapper">
         <div className="sec5_cont">
-          <h2>Meet our Staffs</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit explicabo laboriosam dolorem quia rem reiciendis
-            perferendis minus.
-          </p>
+          <ScrollAnimation
+            animateIn="animate__slideInLeft"
+            animateOnce
+            delay={250}
+          >
+            <h2>Meet our Staffs</h2>
+          </ScrollAnimation>
+          <ScrollAnimation
+            animateIn="animate__slideInRight"
+            animateOnce
+            delay={500}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reprehenderit explicabo laboriosam dolorem quia rem reiciendis
+              perferendis minus.
+            </p>
+          </ScrollAnimation>
           <div className="staffLists">
             <Carousel emulateTouch showIndicators={false} showStatus={false}>
               {data?.map((d: any) => {
                 return (
-                  <div className="slide_item">
+                  <div className="slide_item" key={d._id}>
                     <div className="slideImgContainer">
                       <img src={getImage(d.image.asset._ref)} alt={d.name} />
                     </div>
@@ -35,7 +48,7 @@ function Section5() {
                       <span className="block text-sm text-[#c1faff]">
                         {d.position}
                       </span>
-                      <div className="author_description font-thin">
+                      <div className="text-white font-thin mt-2">
                         <PortableText value={d.bio} />
                       </div>
                     </p>

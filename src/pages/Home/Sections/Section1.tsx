@@ -6,6 +6,7 @@ import secImg from "../../../assets/images/sec1img.jpg";
 import { getImage } from "../../../utils/";
 import { useRecoilValue } from "recoil";
 import { servicesList } from "../../../Atoms/selectors";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const Section1 = () => {
   const data = useRecoilValue(servicesList);
@@ -29,11 +30,10 @@ const Section1 = () => {
               <>
                 {data.map((d: any, i: number) => {
                   return (
-                    <div
+                    <ScrollAnimation
                       className="service_item"
-                      key={d._id}
-                      data-aos="slide-up"
-                      data-aos-duration={(i === 0 ? 1 : i) * 1000}
+                      animateIn="animate__fadeInLeft"
+                      delay={(i + 1) * 250}
                     >
                       <img
                         src={getImage(d.iconImage.asset._ref)}
@@ -42,7 +42,7 @@ const Section1 = () => {
                       <h3>{d.heading}</h3>
                       <p>{d.content}</p>
                       <Link to={d.link}>Read More</Link>
-                    </div>
+                    </ScrollAnimation>
                   );
                 })}
               </>

@@ -22,6 +22,15 @@ export const bannerData = selector({
   },
 });
 
+export const pagesdata = selector({
+  key: "pagesdata",
+  get: ({ get }) => {
+    const data = get(homeDatas);
+    if (!data) return [];
+    return data?.pages;
+  },
+});
+
 export const authorData = selector({
   key: "authorData",
   get: ({ get }) => {

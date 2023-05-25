@@ -35,6 +35,7 @@ export const getAllHomeData = async () => {
       'post': *[_type == "post"],
       'events': *[_type == "events"],
       'author': *[_type == "author"],
+      'pages': *[_type == "pages"],
     }
   `);
 

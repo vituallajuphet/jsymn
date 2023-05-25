@@ -120,7 +120,7 @@ function Footer() {
               <div>
                 <ul className="text-sm flex-col gap-[7px] flex">
                   <li>
-                    <Link to="about-us">Home</Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
                     <Link to="about-us">About Us</Link>
