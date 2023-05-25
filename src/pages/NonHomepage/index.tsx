@@ -5,6 +5,7 @@ import { getImage } from "../../utils";
 import { PortableText } from "@portabletext/react";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { motion } from "framer-motion";
+import { Content } from "../../pageContent";
 
 type pageProps = {
   _id?: string;
@@ -45,9 +46,10 @@ const myPortableTextComponents = {
 };
 
 const NonHomePages: FC<pageProps> = (props) => {
-  const { title, bannerImage, body } = props;
+  const { title, bannerImage, body, customContent } = props;
 
   const hasImage = !!getImage(bannerImage?.asset?._ref);
+  const Component = customContent ? Content[customContent] : undefined;
 
   return (
     <>
@@ -63,10 +65,15 @@ const NonHomePages: FC<pageProps> = (props) => {
               ? {
                   backgroundImage: `url(${getImage(bannerImage?.asset?._ref)})`,
                 }
-              : {}
+              : { background: "#263136" }
           }
-          className={`w-full h-[500px] overflow-hidden bg-no-repeat bg-cover no-repeat bg-center relative`}
+          className={`w-full h-[500px] overflow-hidden bg-no-repeat bg-cover no-repeat bg-center relative  flex flex-row items-center justify-center`}
         >
+          {!hasImage && (
+            <p className="text-white text-[30px] font-thin italic">
+              No image preview
+            </p>
+          )}
           <div className="absolute bottom-0 left-0 bg-[#22222284] py-6 w-full">
             <div className="wrapper">
               <h1 className="text-white text-[33px]">{title}</h1>
@@ -80,7 +87,14 @@ const NonHomePages: FC<pageProps> = (props) => {
         </div>
         <div id="main">
           <div className="wrapper py-6 min-h-[400px]">
-            <PortableText value={body} components={myPortableTextComponents} />
+            {Component ? (
+              <Component />
+            ) : (
+              <PortableText
+                value={body}
+                components={myPortableTextComponents}
+              />
+            )}
           </div>
         </div>
         <Footer />

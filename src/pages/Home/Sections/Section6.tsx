@@ -62,7 +62,7 @@ function Section6() {
       <div className="wrapper">
         <div className="sec6_cont">
           <h2>See our Latest Posts</h2>
-          <p>
+          <p className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Repellendus, id, sunt autem voluptatem nesciunt et inventore
             doloribus consequuntur ratione

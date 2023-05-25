@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { navLinks } from "../../data";
 
 function Footer() {
   return (
@@ -119,27 +120,21 @@ function Footer() {
               </h3>
               <div>
                 <ul className="text-sm flex-col gap-[7px] flex">
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">About Us</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">Services</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">Blogs</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">Our Staff</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">Events</Link>
-                  </li>
-                  <li>
-                    <Link to="about-us">Contact Us</Link>
-                  </li>
+                  {navLinks.map((nav) => {
+                    return (
+                      <li>
+                        <NavLink
+                          className={({ isActive, isPending }) =>
+                            isActive ? "text-[#0ab2cc]" : "text-gray-700"
+                          }
+                          key={nav.id}
+                          to={nav.path}
+                        >
+                          {nav.label}
+                        </NavLink>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
