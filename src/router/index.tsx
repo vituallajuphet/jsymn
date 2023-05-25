@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Loading from "../components/Loading/Loading";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { appstate } from "../Atoms/AppState";
-import { NonHomePages, Home } from "../pages";
+import { NonHomePages, Home, NotFound } from "../pages";
 import { pagesdata } from "../Atoms/selectors";
 import { AnimatePresence } from "framer-motion";
 
@@ -20,6 +20,7 @@ const AppRoutes = () => {
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
           {pages
             ?.filter((f: any) => f.published)
             ?.map((page: any) => {
