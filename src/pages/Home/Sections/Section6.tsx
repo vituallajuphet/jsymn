@@ -10,23 +10,25 @@ import ScrollAnimation from "react-animate-on-scroll";
 const items = [
   {
     id: "1",
-    title: "Heading 1",
+    title: "Blog post 1",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
+      "We are excited to invite you to our upcoming post, where you'll have the opportunity to immerse yourself in a world of inspiration, innovation, and connections.",
+
     images: post1,
   },
   {
     id: "2",
-    title: "Heading 2",
+    title: "Blog post 2",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
+      "We are excited to invite you to our upcoming post, where you'll have the opportunity to immerse yourself in a world of inspiration, innovation, and connections.",
+
     images: post2,
   },
   {
     id: "3",
-    title: "Heading 3",
+    title: "Blog post 3",
     content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
+      "We are excited to invite you to our upcoming post, where you'll have the opportunity to immerse yourself in a world of inspiration, innovation, and connections.",
     images: post3,
   },
 ];

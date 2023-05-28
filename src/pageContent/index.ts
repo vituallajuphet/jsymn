@@ -3,6 +3,7 @@ import Services from "./Services";
 import OurStaff from "./OurStaff";
 import Events from "./Events";
 import ContactUs from "./Contact";
+import AboutUs from "./AboutUs"
 
 export const Content: any = {
   Blog,
@@ -10,4 +11,5 @@ export const Content: any = {
   OurStaff,
   Events,
   ContactUs,
+  AboutUs
 };
