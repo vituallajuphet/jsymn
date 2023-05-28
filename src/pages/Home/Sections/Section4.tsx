@@ -13,18 +13,18 @@ function Section4() {
   return (
     <StyledCont className="section section4">
       <div className="wrapper">
-        <div className="sec4_cont">
+        <div className="sec4_cont lg:!px-4 xl:!px-0 md:!px-4 !px-4 md:flex-nowrap flex-wrap md:!flex-row !flex-col">
           <div className="sec4_left">
             <h1>
-              Welcome to <span>J-SYNC</span>
+              Welcome to <span>JSYNC</span>
             </h1>
             <div className="main_content">
               <PortableText value={data[0]?.content} />
             </div>
           </div>
-          <div className="sec4_right">
+          <div className="sec4_right md:block justify-center flex md:!ml-4 !ml-0">
             <figure>
-              <img src={board} />
+              <img src={board} alt="motherboard"/>
             </figure>
           </div>
         </div>

@@ -115,16 +115,16 @@ function Footer() {
   return (
     <StyledFooter className="footer">
       <div className="wrapper">
-        <div className="footer_cont pb-16">
+        <div className="footer_cont pb-16 xl:!px-0 !px-4">
           <div className="ftr_top">
             <h2>
               How Can We Help? <span>Send Us a Message</span>
             </h2>
           </div>
-          <div className="ftr_sections">
-            <div className="ftr_form">
+          <div className="ftr_sections  sm:flex-row flex-col">
+            <div className="ftr_form  lg:!w-[auto] sm:!w-[48%] !w-full">
               <p>Need to get in touch with us, just fill up the form below.</p>
-              <form action="#" onSubmit={handleSubmit}>
+              <form action="#" onSubmit={handleSubmit} className="lg:!mr-[8rem]  sm:!mr-6 !mr-0 ">
                 <div className="form_row">
                   <label htmlFor="firstname">
                     <input
@@ -176,7 +176,7 @@ function Footer() {
                 ) : null}
               </form>
             </div>
-            <div className="ftr_map">
+            <div className="ftr_map lg:!w-[500px] sm:!w-[48%] !w-full md:mt-0 mt-8">
               <iframe
                 title="map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980.4168541622529!2d124.96489250905469!3d10.605154848551635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3307a7ab590cf8ed%3A0xb1c00d20c5a99172!2sJ-SYNC!5e0!3m2!1sen!2sph!4v1660145955071!5m2!1sen!2sph"
@@ -188,8 +188,8 @@ function Footer() {
       </div>
       <div className="min-h-[300px] bg-white py-16">
         <div className="wrapper">
-          <div className="flex flex-row gap-6">
-            <div className="flex flex-col max-w-[30%]">
+          <div className="flex flex-row gap-6 xl:px-0 px-4 sm:flex-row flex-col md:flex-no-wrap flex-wrap">
+            <div className="flex flex-col max-w-[100%] md:max-w-[50%] lg:max-w-[40%]">
               <div className="flex flex-row items-center">
                 <a href="#" className="w-[85px] h-[85px]">
                   <img
@@ -205,7 +205,7 @@ function Footer() {
               Experience the synergy of creativity and precision with <strong>JSYNC</strong>. Contact us today to unlock the full potential of graphics design and photography for your brand or personal project. Let us synchronize our talents to create visuals that leave a lasting impression.
               </p>
             </div>
-            <div className="flex flex-col w-[245px]">
+            <div className="flex flex-col lg:w-[245px] max-w-[100%] md:max-w-[50%] lg:max-w-[40%]">
               <h3 className="font-bold text-[18px] text-[#044862]">Address</h3>
               <div className="my-4 mb-8">
                 <address className="whitespace-pre-line not-italic text-sm leading-6">
@@ -239,7 +239,7 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <div className="min-w-[150px]">
+            <div className="lg:min-w-[150px] lg:max-w-[150px] min-w-[unset] w-full">
               <h3 className="font-bold text-[20px] text-[#044862] mb-2">
                 Links
               </h3>

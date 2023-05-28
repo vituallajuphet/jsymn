@@ -12,7 +12,7 @@ const Banner = () => {
 
   return (
     <StyledBanner>
-      <div className="bnr_cont overflow-hidden relative">
+      <div className="bnr_cont overflow-hidden relative bg-[#185d75]">
         <div className="">
           <div className="w-[100%]">
             {data?.length ? (
@@ -30,11 +30,11 @@ const Banner = () => {
                           dta.mainImage.asset._ref
                         )})`,
                       }}
-                      className="h-[500px] bg-no-repeat bg-center"
+                      className="h-[300px] md:h-[500px] bg-no-repeat bg-cover"
                     ></div>
-                    <div className=" w-full bottom-0 left-0 min-h-[200px] py-4 z-20 absolute bg-[#302e2e6c]">
+                    <div className=" w-full bottom-0 left-0 min-h-[200px] py-4 z-20 md:bg-[#302e2e6c] sm:bg-[#185d75] md:px-4 px-4 static xl:absolute lg:absolute md:absolute" >
                       <div className="wrapper">
-                        <h2 className="font-heading text-[2rem] text-white">
+                        <h2 className="font-heading md:text-[2rem] text-[1.3rem] text-white">
                           {dta.heading}
                         </h2>
 
@@ -132,6 +132,7 @@ const StyledBanner = styled.div`
         z-index: 1;
       } */
   }
+
 `;
 
 export default Banner;

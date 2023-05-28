@@ -12,10 +12,10 @@ const Section1 = () => {
   const data = useRecoilValue(servicesList);
 
   return (
-    <StyledCont className="section section1">
+    <StyledCont className="section section1 !md:pb-4 !pb-8 ">
       <div className="wrapper">
-        <div className="sect_cont">
-          <div className="sect1_cont min-w-[236px]">
+        <div className="sect_cont xl:px-0 px-4 md:flex-row flex-col">
+          <div className="sect1_cont md:min-w-[236px] min-w-[100%]">
             <div className="sec1_inner">
               <h2 className="font-heading text-[1.5rem]">Our Services</h2>
               <p>
@@ -24,14 +24,15 @@ const Section1 = () => {
               <Link to="/services">Explore All Services</Link>
             </div>
           </div>
-          <div className="services_lists">
+          <div className="services_lists md:gap-4 -200 gap-0flex-wrap md:flex-nowrap md:ml-[4rem] justify-center ml-0 md:mt-0 mt-10 flex-wrap">
             {data.length ? (
               <>
                 {data.map((d: any, i: number) => {
                   return (
                     <ScrollAnimation
-                      className="service_item"
+                      className="service_item md:mb-4 mb-3 w-full md:max-w-[30%] max-w-[100%]  border-gray-400 border md:p-0 p-4 rounded-lg md:border-none"
                       animateIn="animate__fadeInLeft"
+                      animateOnce
                       delay={(i + 1) * 250}
                     >
                       <img
@@ -60,7 +61,6 @@ const StyledCont = styled.div`
     .sect1_cont {
       background: url(${secImg}) no-repeat;
       background-size: contain;
-      max-width: 300px;
       text-align: center;
       padding: 1rem;
       color: #fff;
@@ -112,12 +112,9 @@ const StyledCont = styled.div`
       }
     }
     .services_lists {
-      margin-left: 4rem;
       display: flex;
       flex-wrap: wrap;
       .service_item {
-        max-width: 30%;
-        margin-bottom: 2rem;
         h3 {
           margin: 0 0 15px;
         }

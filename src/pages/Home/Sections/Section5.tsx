@@ -16,7 +16,7 @@ function Section5() {
   return (
     <StyledCont className="section Section5">
       <div className="wrapper">
-        <div className="sec5_cont">
+        <div className="sec5_cont xl:!px-0 !px-4 !pb-6 md:!pb-[4rem]">
           <ScrollAnimation
             animateIn="animate__slideInLeft"
             animateOnce

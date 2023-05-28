@@ -11,14 +11,14 @@ const Events = () => {
   const data = useRecoilValue(eventData);
 
   return (
-    <div className="event_cont bg-[#d9f0f7] min-h-[400px] pt-4 pb-16 animatedParent">
+    <div className="event_cont bg-[#d9f0f7] min-h-[400px] md:pt-4 md:pb-16 py-4 pb-12 animatedParent">
       <div className="wrapper">
-        <div className="flex flex-col">
+        <div className="flex flex-col lg:px-4 xl:px-0 md:px-4 px-4">
           <div className="flex-row flex justify-start w-full items-center py-8">
             <h2 className="text-[26px] font-bold">Upcoming Events</h2>
           </div>
 
-          <div className="flex flex-row justify-start gap-4">
+          <div className="flex flex-row  gap-4 md:justify-start md:flex-nowrap flex-wrap justify-center">
             {data?.length ? (
               data?.map((d: any, index: number) => {
                 const date = moment(d.eventDate).format("MMM-DD");
@@ -28,7 +28,7 @@ const Events = () => {
                   <ScrollAnimation
                     initiallyVisible={true}
                     animateOnce
-                    className="max-w-[300px] w-full bg-white rounded-lg overflow-hidden cursor-pointer"
+                    className="md:max-w-[300px] sm:max-w-[48%] max-w-full w-full bg-white rounded-lg overflow-hidden cursor-pointer"
                     animateIn="animate__fadeInLeft"
                     delay={(index + 1) * 250}
                   >

@@ -37,9 +37,9 @@ interface StyledProps {
 
 function Section6() {
   return (
-    <StyledCont className="section Section6">
+    <StyledCont className="section Section6 ">
       <div className="wrapper">
-        <div className="sec6_cont">
+        <div className="sec6_cont xl:!px-0 !px-4">
           <h2>See our Latest Posts</h2>
           <p className="text-white">
           Discover our latest post, offering fresh insights, valuable tips, and inspiring content to keep you informed and inspired. Stay updated with the latest trends and industry news.

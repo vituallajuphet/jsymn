@@ -16,18 +16,18 @@ const Section2 = () => {
     <StyledCont className="section section2">
       <Loading />
       <div className="wrapper">
-        <div className="sec2_upper">
-          <h2>{heading.heading}</h2>
-          {/* <h2>Have Computer Problems? <span>Get Help Right Now</span></h2> */}
+        <div className="sec2_upper !md:px-0 md:text-left !px-4 text-center">
+          <h2 className="md:text-[30px] text-[25px]">{heading.heading}</h2>
         </div>
-        <div className="sec2_cont">
+        <div className="sec2_cont !md:px-0 !px-4 md:flex-nowrap flex-wrap">
           {list.map((l: any, i: number) => {
             return (
               <ScrollAnimation
                 key={l._id}
-                className="sec2_item"
+                className="sec2_item md:max-w-[30%] max-w-full"
                 animateIn="animate__slideInUp"
                 delay={(i + 1) * 250}
+                animateOnce
               >
                 <span>
                   <i className={`fas fa-${l.icon}`}></i>
@@ -53,7 +53,6 @@ const StyledCont = styled.div`
     justify-content: center;
     h2 {
       color: #219bc5;
-      font-size: 30px;
     }
   }
   .sec2_cont {
@@ -66,7 +65,6 @@ const StyledCont = styled.div`
       align-items: center;
       justify-content: center;
       text-align: center;
-      max-width: 30%;
       h3 {
         margin: 1rem 0;
       }
