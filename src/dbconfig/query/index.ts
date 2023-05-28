@@ -25,6 +25,7 @@ export const getSection2Heading = async () => {
   return data;
 };
 
+
 export const getAllHomeData = async () => {
   const data = await client.fetch(`
     {
@@ -36,6 +37,7 @@ export const getAllHomeData = async () => {
       'events': *[_type == "events"],
       'author': *[_type == "author"],
       'pages': *[_type == "pages"],
+      'homecontent': *[_type == "homecontent"],
     }
   `);
 

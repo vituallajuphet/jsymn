@@ -29,27 +29,6 @@ const items = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
     images: post3,
   },
-  {
-    id: "4",
-    title: "Heading 4",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
-    images: post1,
-  },
-  {
-    id: "5",
-    title: "Heading 5",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
-    images: post2,
-  },
-  {
-    id: "6",
-    title: "Heading 6",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, id, sunt autem voluptatem nesciunt et inventore doloribus consequuntur ratione",
-    images: post3,
-  },
 ];
 
 interface StyledProps {
@@ -63,9 +42,7 @@ function Section6() {
         <div className="sec6_cont">
           <h2>See our Latest Posts</h2>
           <p className="text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Repellendus, id, sunt autem voluptatem nesciunt et inventore
-            doloribus consequuntur ratione
+          Discover our latest post, offering fresh insights, valuable tips, and inspiring content to keep you informed and inspired. Stay updated with the latest trends and industry news.
           </p>
           <div className="posts_cont">
             {items.map((item, index) => {

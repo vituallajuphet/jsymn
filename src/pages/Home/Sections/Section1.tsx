@@ -15,12 +15,11 @@ const Section1 = () => {
     <StyledCont className="section section1">
       <div className="wrapper">
         <div className="sect_cont">
-          <div className="sect1_cont">
+          <div className="sect1_cont min-w-[236px]">
             <div className="sec1_inner">
               <h2 className="font-heading text-[1.5rem]">Our Services</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                dolores omnis repellendus porro unde blanditiis obcaecati sint?
+                Explore our comprehensive range of services, tailored to meet your needs.
               </p>
               <Link to="/services">Explore All Services</Link>
             </div>

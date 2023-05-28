@@ -2,8 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import board from "../../../assets/images/board.jpg";
+import { homecontentList } from "../../../Atoms/selectors";
+import { useRecoilValue } from "recoil";
+import { PortableText } from "@portabletext/react";
 
 function Section4() {
+
+  const data = useRecoilValue(homecontentList);
+
   return (
     <StyledCont className="section section4">
       <div className="wrapper">
@@ -13,24 +19,7 @@ function Section4() {
               Welcome to <span>J-SYNC</span>
             </h1>
             <div className="main_content">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae maxime dolor quam fugiat similique unde numquam,
-                doloribus provident! Delectus reiciendis quam nesciunt sed nihil
-                tempore voluptatibus reprehenderit tenetur. Veniam, doloremque.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel
-                aperiam quisquam cumque maiores! Harum sint optio veniam
-                laudantium, laborum aspernatur quidem. Sunt distinctio
-                necessitatibus ipsum voluptas molestiae tempora ullam sint?
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae
-                error enim unde hic aut dignissimos minus aperiam aliquid
-                laboriosam doloremque, facere, asperiores eveniet sequi? Impedit
-                ad natus molestias dignissimos aspernatur.
-              </p>
+              <PortableText value={data[0]?.content} />
             </div>
           </div>
           <div className="sec4_right">

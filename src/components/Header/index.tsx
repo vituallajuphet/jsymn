@@ -26,13 +26,13 @@ const Header = () => {
               </div> */}
               <div className="social_icons">
                 <span>
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.facebook.com/profile.php?id=100087108311774&mibextid=ZbWKwL">
                     <i className="fa-brands fa-facebook"></i>
                   </a>
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.instagram.com">
                     <i className="fa-brands fa-instagram"></i>
                   </a>
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.twitter.com">
                     <i className="fa-brands fa-twitter"></i>
                   </a>
                 </span>

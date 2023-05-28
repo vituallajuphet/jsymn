@@ -58,6 +58,16 @@ export const servicesList = selector({
   },
 });
 
+export const homecontentList = selector({
+  key: "homecontentList",
+  get: ({ get }) => {
+    const data = get(homeDatas);
+    if (!data) return [];
+    return data?.homecontent;
+  },
+});
+
+
 export const section2data = selector({
   key: "section2data",
   get: ({ get }) => {

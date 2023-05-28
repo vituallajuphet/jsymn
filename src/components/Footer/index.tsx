@@ -1,9 +1,117 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { navLinks } from "../../data";
+import axios from 'axios'
 
 function Footer() {
+
+  const [err, setErr] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sendingStatus, setSendingStatus] = useState({
+    message:'',
+    type: 'error'
+  });
+
+  const nameRef = useRef<any>('')
+  const lastRef = useRef<any>('')
+  const emailref = useRef<any>('')
+  const messageRef = useRef<any>('')
+  const emailSubRef = useRef<any>('')
+
+  const handleSubmit = (e: any) => {
+      setErr('')
+      e.preventDefault()
+      if(
+        !nameRef?.current?.value || !lastRef?.current?.value || !emailref?.current?.value ||  !messageRef?.current?.value
+      ) {
+        setErr('Fields are required!')
+        return
+      }
+      
+      setLoading(true)
+      sendEmail();
+  }
+
+  const handleSubmitSubscribe = (e: any) => {
+    e.preventDefault()
+    if(
+      !emailSubRef?.current?.value
+    ) {
+      return
+    }
+    
+    setLoading(true)
+    sendSubscribe();
+}
+
+  const sendSubscribe = async () => {
+    const fdata = new FormData();
+    fdata.append('email', emailref?.current?.value)
+    axios({
+      method: 'post',
+      url: 'https://jsync.online/api/subscribe.php',
+      data:fdata,
+    }).then(res=> {
+      setLoading(false)
+      setSendingStatus(() => {
+        if(res.data['sent-email']=== 'success') {
+          return {
+            message: "Email sent Successfully!",
+            type: 'success'
+          }
+        }
+        return {
+          message: "Sending email failed!",
+          type: 'error'
+        }
+      })
+    }).catch(err => {
+      return {
+        message: "there is an error in sending email",
+        type: 'error'
+      }
+    })
+
+  }
+
+
+
+  const sendEmail = async () => {
+    const fdata = new FormData();
+    fdata.append('fname', nameRef?.current?.value)
+    fdata.append('lname', lastRef?.current?.value)
+    fdata.append('email', emailref?.current?.value)
+    fdata.append('message', messageRef?.current?.value)
+    axios({
+      method: 'post',
+      url: 'https://jsync.online/api/sendemail.php',
+      data:fdata,
+    }).then(res=> {
+      setLoading(false)
+      setSendingStatus(() => {
+        if(res.data['sent-email']=== 'success') {
+          return {
+            message: "Email sent Successfully!",
+            type: 'success'
+          }
+        }
+        return {
+          message: "Sending email failed!",
+          type: 'error'
+        }
+      })
+    }).catch(err => {
+      return {
+        message: "there is an error in sending email",
+        type: 'error'
+      }
+    })
+
+  }
+
+  const messgeCls = sendingStatus.type === 'error' ? 'border-red-400 border rounded-md text-red-400 p-4 py-3' : 'border-green-700 border rounded-md text-green-700 p-4 py-3'
+  
   return (
     <StyledFooter className="footer">
       <div className="wrapper">
@@ -16,10 +124,11 @@ function Footer() {
           <div className="ftr_sections">
             <div className="ftr_form">
               <p>Need to get in touch with us, just fill up the form below.</p>
-              <form action="">
+              <form action="#" onSubmit={handleSubmit}>
                 <div className="form_row">
                   <label htmlFor="firstname">
                     <input
+                      ref={nameRef}
                       type="text"
                       name="firstname"
                       id="firstname"
@@ -28,6 +137,7 @@ function Footer() {
                   </label>
                   <label htmlFor="lastname">
                     <input
+                    ref={lastRef}
                       type="text"
                       name="lastname"
                       id="lastname"
@@ -38,6 +148,7 @@ function Footer() {
                 <div className="form_row">
                   <label htmlFor="email">
                     <input
+                    ref={emailref}
                       type="email"
                       name="email"
                       id="lastname"
@@ -47,16 +158,27 @@ function Footer() {
                 </div>
                 <div className="form_row">
                   <label htmlFor="message">
-                    <textarea name="message" id="message"></textarea>
+                    <textarea ref={messageRef} placeholder="Message" name="message" id="message"></textarea>
                   </label>
                 </div>
                 <div className="form_row">
-                  <button type="submit">Submit</button>
+                  <button disabled={loading} type="submit">Submit</button>
                 </div>
+                {!!err ? (
+                  <div className="border-red-400 border rounded-md text-red-400 p-4 py-3">
+                  Fields are required!
+                </div>
+                ) : null}
+                {!!sendingStatus.message ? (
+                  <div className={messgeCls}>
+                    {sendingStatus.message}
+                </div>
+                ) : null}
               </form>
             </div>
             <div className="ftr_map">
               <iframe
+                title="map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d980.4168541622529!2d124.96489250905469!3d10.605154848551635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3307a7ab590cf8ed%3A0xb1c00d20c5a99172!2sJ-SYNC!5e0!3m2!1sen!2sph!4v1660145955071!5m2!1sen!2sph"
                 loading="lazy"
               ></iframe>
@@ -80,9 +202,7 @@ function Footer() {
               </div>
 
               <p className="text-sm pt-6 leading-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae magni dolorem porro dicta debitis. Repudiandae error
-                inventore incidunt dolor non
+              Experience the synergy of creativity and precision with <strong>JSYNC</strong>. Contact us today to unlock the full potential of graphics design and photography for your brand or personal project. Let us synchronize our talents to create visuals that leave a lasting impression.
               </p>
             </div>
             <div className="flex flex-col w-[245px]">
@@ -96,20 +216,25 @@ function Footer() {
                 Contact Information
               </h3>
               <div className="mt-2 text-sm">
-                <div className="flex flex-row gap-2 items-center">
-                  <span className="text-lg text-[#323232]">
+                <div className="flex flex-row gap-2 ">
+                  <span className="text-lg text-[#323232] mr-1">
                     <i className="fas fa-phone"></i>
                   </span>
+                  <div className="flex-col flex">
                   <a href="tel:09058927403" className="font-bold">
-                    +639058927403
+                    0955 375 8132
                   </a>
+                  <a href="tel:09058927403" className="font-bold">
+                   0956 005 9255
+                  </a>
+                  </div>
                 </div>
-                <div className="flex flex-row gap-2 items-center mt-1">
-                  <span className="text-lg text-[#323232]">
+                <div className="flex flex-row gap-2 items-center mt-1 ">
+                  <span className="text-lg text-[#323232] mr-1">
                     <i className="fas fa-envelope"></i>
                   </span>
-                  <a href="mailto:jsync@gmail.com" className="font-bold">
-                    jsync@gmail.com
+                  <a href="mailto:jsync28@gmail.com" className="font-bold">
+                  jsync28@gmail.com
                   </a>
                 </div>
               </div>
@@ -143,7 +268,7 @@ function Footer() {
                 Newsletter
               </h3>
               <div>
-                <form action="">
+                <form action="#" onSubmit={handleSubmitSubscribe}>
                   <label htmlFor="email">
                     <input
                       required
@@ -152,6 +277,7 @@ function Footer() {
                       name="email"
                       id="email"
                       placeholder="Your Email Address"
+                      ref={emailSubRef}
                     />
                   </label>
                   <button
@@ -164,13 +290,13 @@ function Footer() {
               </div>
               <div className="mt-6">
                 <span className="flex flex-row items-center gap-4 text-[23px] pl-2">
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.facebook.com/profile.php?id=100087108311774&mibextid=ZbWKwL">
                     <i className="fa-brands fa-facebook"></i>
                   </a>
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.instagram.com">
                     <i className="fa-brands fa-instagram"></i>
                   </a>
-                  <a href="https://www.facebook.com">
+                  <a target="_blank" rel="noreferrer"  href="https://www.twitter.com">
                     <i className="fa-brands fa-twitter"></i>
                   </a>
                 </span>

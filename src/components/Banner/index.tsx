@@ -38,7 +38,7 @@ const Banner = () => {
                           {dta.heading}
                         </h2>
 
-                        <div className="text-white">
+                        <div className="text-white mt-4">
                           <PortableText value={dta.body} />
                         </div>
                       </div>

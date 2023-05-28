@@ -30,9 +30,7 @@ function Section5() {
             delay={500}
           >
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit explicabo laboriosam dolorem quia rem reiciendis
-              perferendis minus.
+            Meet our exceptional staff – a dedicated team of talented professionals, experts in their fields, ready to bring your vision to life with their expertise and passion for excellence.
             </p>
           </ScrollAnimation>
           <div className="staffLists">
