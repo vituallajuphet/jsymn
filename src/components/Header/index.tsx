@@ -2,11 +2,84 @@ import React, { useEffect, useMemo, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { getBanner } from "../../dbconfig/query";
-import { getImage } from "../../utils";
 import { navLinks } from "../../data";
 
 const Header = () => {
+
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    const callback = (e?: any)=> {
+      const winWidth = e?.target.innerWidth || window.innerWidth
+      const height = e?.target.innerHeight || window.innerHeight
+      setWidth(winWidth)
+      setHeight(height)
+    }
+
+    window.addEventListener('resize',callback )
+
+    callback()
+    return ()=> {
+      window.removeEventListener('resize',callback )
+    }
+  }, [])
+
+
+
+  if(width <= 600) {
+    return (
+      <>
+      <div className="flex flex-row justify-between items-center bg-[#185d75] p-3 py-4 relative z-[50]">
+        <div className="">
+        <NavLink to="/" className='flex-row flex items-center justify-center'>
+          <img src={logo} alt="Jsync logo" className="block w-[50px] h-[50px]"/>
+          <span className="text-white ml-2 text-xl">JSYNC</span>
+        </NavLink>
+        </div>
+        <div>
+          <button type="button" className="text-white text-xl"
+            onClick={() => {
+              setOpen(prev => !prev)
+            }}
+          >
+            <span><i className={ open ? 'fas fa-times' : 'fas fa-bars'}></i></span>
+          </button>
+        </div>
+        
+      </div>
+      {
+        open ? (
+          <div style={{height: height}} className={`fixed left-0 w-full bg-[#222] z-[30] top-[82px] `}>
+        <nav>
+              <ul className="p-4">
+                {navLinks.map((nav) => {
+                  return (
+                    <li>
+                      <NavLink
+                        className={({ isActive, isPending }) =>
+                        `${isActive  ? "text-[#0ab2cc]" : "text-[#185d75] font-thin text-white "}  w-full text-center p-2 w-full block mb-2 text-xl`
+                        }
+                        key={nav.id}
+                        to={nav.path}
+                      >
+                        {nav.label}
+                      </NavLink>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+      </div>
+        ) : null
+
+      }
+      </>
+    )
+  }
+
   return (
     <StyledHeader className="header">
       <div className="wrapper">
@@ -39,18 +112,6 @@ const Header = () => {
               </div>
             </div>
           </div>
-          {/* <div>
-            {data.map((r: any) => {
-              const imgRef = r.mainImage.asset._ref;
-
-              return (
-                <div>
-                  <div>{r?.title}</div>
-                  <img src={getImage(imgRef)} alt='tawa' />
-                </div>
-              );
-            })}
-          </div> */}
           <div className="nav_cont">
             <nav>
               <ul>
@@ -186,6 +247,30 @@ const StyledHeader = styled.div`
     }
     img {
       width: 50px;
+    }
+  }
+
+
+  @media only screen and (max-width: 1200px) {
+    .header_cont{
+      padding: 7px 15px
+    }
+  }
+
+  @media only screen and (max-width: 1010px) {
+    .header_cont{
+      flex-direction: column;
+      align-items: 'center';
+      justify-content: 'center'
+    }
+    .logo_cont{
+      flex-direction: column;
+      align-items: 'center';
+      justify-content: 'center'
+    }
+    .header_cont .contact_header_info{
+      margin-left: 0;
+      margin-top: 20px
     }
   }
 `;
