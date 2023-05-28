@@ -67,26 +67,26 @@ const NonHomePages: FC<pageProps> = (props) => {
                 }
               : { background: "#263136" }
           }
-          className={`w-full h-[500px] overflow-hidden bg-no-repeat bg-cover no-repeat bg-center relative  flex flex-row items-center justify-center`}
+          className={`w-full lg:h-[500px] h-[300px] overflow-hidden bg-no-repeat bg-cover no-repeat bg-center relative  flex flex-row items-center justify-center`}
         >
           {!hasImage && (
             <p className="text-white text-[30px] font-thin italic">
               No image preview
             </p>
           )}
-          <div className="absolute bottom-0 left-0 bg-[#22222284] py-6 w-full">
+          <div className="absolute bottom-0 left-0 bg-[#22222284] py-6 w-full xl:px-0 px-4">
             <div className="wrapper">
               <h1 className="text-white text-[33px]">{title}</h1>
             </div>
           </div>
         </div>
         <div className=" mt-6">
-          <div className="wrapper">
+          <div className="wrapper xl:px-0 px-4">
             <Breadcrumbs current={title} />
           </div>
         </div>
         <div id="main">
-          <div className="wrapper py-6 min-h-[400px]">
+          <div className="wrapper py-6 min-h-[400px] xl:px-0 px-4">
             {Component ? (
               <Component />
             ) : (

@@ -113,9 +113,9 @@ function Footer() {
   const messgeCls = sendingStatus.type === 'error' ? 'border-red-400 border rounded-md text-red-400 p-4 py-3' : 'border-green-700 border rounded-md text-green-700 p-4 py-3'
   
   return (
-    <StyledFooter className="footer">
+    <StyledFooter className="footer lg:!pt-[4rem] !pt-8">
       <div className="wrapper">
-        <div className="footer_cont pb-16 xl:!px-0 !px-4">
+        <div className="footer_cont   pb-16 xl:!px-0 !px-4">
           <div className="ftr_top">
             <h2>
               How Can We Help? <span>Send Us a Message</span>
@@ -186,7 +186,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="min-h-[300px] bg-white py-16">
+      <div className="min-h-[300px] bg-white lg:py-16 py-8">
         <div className="wrapper">
           <div className="flex flex-row gap-6 xl:px-0 px-4 sm:flex-row flex-col md:flex-no-wrap flex-wrap">
             <div className="flex flex-col max-w-[100%] md:max-w-[50%] lg:max-w-[40%]">
