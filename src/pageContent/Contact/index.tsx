@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
 
@@ -66,7 +67,15 @@ const ContactUs = () => {
 
   const messgeCls = sendingStatus.type === 'error' ? 'border-red-400 mt-4 border rounded-md text-red-400 p-4 py-3 bg-white' : 'border-green-700 bg-white border rounded-md mt-4 text-green-700 p-4 py-3'
 
-  return <div>
+  return (
+    <>
+     <Helmet>
+        <meta charSet="utf-8" />
+        < meta name="description" content="Get in touch with us to explore how our top-notch services in graphics design, video editing, photography, computer services, web and app development can elevate your digital presence and meet your specific needs."/> 
+        <meta name='keywords' content="graphics design, video editing, photography, computer services, web development, app development, digital marketing, logo design, motion graphics, photo retouching, IT support, UI/UX design, social media management, content creation, website maintenance, software development, branding, image editing, responsive web design, mobile app development"/>
+        <title>JSYNC | Contact Us</title>
+    </Helmet>
+      <div>
     <h3 className="mb-4">Get in Touch with Us </h3>
     <div>
      <p>We would love to hear from you! If you have any questions, inquiries, or want to discuss a project, feel free to reach out to us. Our team at <strong>JSYNC</strong> is here to provide you with the assistance you need.</p>
@@ -153,6 +162,8 @@ const ContactUs = () => {
     </form>
     </div>
   </div>
+    </>
+  )
 };
 
 export default ContactUs;

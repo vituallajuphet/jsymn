@@ -4,9 +4,11 @@ import AppRoutes from "./router";
 import "./App.css";
 import "animate.css/animate.min.css";
 import { RecoilRoot } from "recoil";
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
+    <HelmetProvider>
     <RecoilRoot>
       <React.StrictMode>
         <BrowserRouter>
@@ -14,6 +16,7 @@ function App() {
         </BrowserRouter>
       </React.StrictMode>
     </RecoilRoot>
+    </HelmetProvider>
   );
 }
 

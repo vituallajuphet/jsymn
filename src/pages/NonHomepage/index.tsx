@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { motion } from "framer-motion";
 import { Content } from "../../pageContent";
+import { Helmet } from "react-helmet-async";
 
 type pageProps = {
   _id?: string;
@@ -46,13 +47,19 @@ const myPortableTextComponents = {
 };
 
 const NonHomePages: FC<pageProps> = (props) => {
-  const { title, bannerImage, body, customContent } = props;
+  const { title, bannerImage, body, customContent, customBodyContent} = props;
 
   const hasImage = !!getImage(bannerImage?.asset?._ref);
   const Component = customContent ? Content[customContent] : undefined;
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        < meta name="description" content="Unlock the full potential of your digital presence with Jsync's premier services in graphics design, video editing, photography, computer services, and web and app development."/> 
+          <meta name='keywords' content="graphics design, video editing, photography, computer services, web development, app development, digital marketing, logo design, motion graphics, photo retouching, IT support, UI/UX design, social media management, content creation, website maintenance, software development, branding, image editing, responsive web design, mobile app development"/>
+        <title>JSYNC | {title}</title>
+    </Helmet>
       <Header />
       <motion.div
         initial={{ opacity: 0 }}
@@ -88,7 +95,7 @@ const NonHomePages: FC<pageProps> = (props) => {
         <div id="main">
           <div className="wrapper py-6 min-h-[400px] xl:px-0 px-4">
             {Component ? (
-              <Component />
+              <Component {...props} />
             ) : (
               <PortableText
                 value={body}

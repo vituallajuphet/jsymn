@@ -6,6 +6,7 @@ import { appstate } from "../Atoms/AppState";
 import { NonHomePages, Home, NotFound } from "../pages";
 import { pagesdata } from "../Atoms/selectors";
 import { AnimatePresence } from "framer-motion";
+import UploadPage from "../pages/UploadPage";
 
 const AppRoutes = () => {
   const pages = useRecoilValue(pagesdata);
@@ -43,6 +44,7 @@ const AppRoutes = () => {
                 />
               );
             })}
+            <Route path="upload-files" element={<UploadPage />} />
         </Routes>
       </AnimatePresence>
     </div>

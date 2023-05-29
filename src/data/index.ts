@@ -6,6 +6,12 @@ export const navLinks = [
     protected: false,
   },
   {
+    id: "portfolio",
+    label: "Portfolio",
+    path: "/portfolio",
+    protected: false,
+  },
+  {
     id: "aboutus",
     label: "About Us",
     path: "/about-us",
@@ -22,7 +28,8 @@ export const navLinks = [
     label: "Blog",
     path: "/blog",
     protected: false,
-  },
+  }
+  ,
   {
     id: "ourstaff",
     label: "Our Staff",
